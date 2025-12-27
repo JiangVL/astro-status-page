@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
+import vercel from "@astrojs/vercel";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
@@ -7,18 +7,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: "server",
-  adapter: cloudflare({
-    runtime: {
-      mode: "local",
-      type: "pages",
-      bindings: {
-        // example of a var binding (environment variable)
-        API_KEY: {
-          type: "secret",
-        },
-      },
-    },
-  }),
+  adapter: vercel(),
 });
 
 // // https://astro.build/config
